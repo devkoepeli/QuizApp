@@ -1,0 +1,15 @@
+/* 
+main-color-blue: #183CE9;
+color-body: #F3ECFF;
+color-green: #4EBF17;
+color-light-green: #B7F799;
+color-grey-options: #D6D6D6;
+color-lightblue-navigator: #DBDFF4;
+color-bg-quizz: #F7F7F7;
+ */
+
+
+body {
+    background-color: #F3ECFF;
+    min-height: 100vh;
+}
