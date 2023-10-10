@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
 
-    <script src="scripts/script.js"></script>
     <script src="scripts/bootstrap.bundle.min.js"></script>
+    <script src="scripts/script.js"></script>
+
 </head>
 
 <body>
@@ -36,48 +37,17 @@
                     Java
                 </div>
             </div>
-            <div class="card-body">
-                <h5 class="card-title mt-4">Wer hat HTML erfunden?</h5>
-                <div class="card-answers">
-                    <div class="card mb-3 card-answer">
-                        <div class="card-option">
-                            A
-                        </div>
-                        <div class="card-body pd_75">
-                            Antwort 1
-                        </div>
-                    </div>
-                    <div class="card mb-3 card-answer">
-                        <div class="card-option">
-                            B
-                        </div>
-                        <div class="card-body pd_75">
-                            Antwort 2
-                        </div>
-                    </div>
-                    <div class="card mb-3 card-answer">
-                        <div class="card-option">
-                            C
-                        </div>
-                        <div class="card-body pd_75">
-                            Antwort 3
-                        </div>
-                    </div>
-                    <div class="card card-answer">
-                        <div class="card-option">
-                            D
-                        </div>
-                        <div class="card-body pd_75">
-                            Antwort 4
-                        </div>
+            <div id="card" class="card-body">
+                <div class="card-image-container">
+                    <img class="card-image" src="img/Quizapp-blue/bg b.png" alt="Bild vom Quiz">
+                    <h5 class="quiz-greeting">Welcome to<br>
+                        The Awesome HTML Quiz
+                    </h5>
+                    <div class="btn-container">
+                        <button onclick="showQuestion(0)" class="btn btn-primary btn-primary--start">Quiz starten</button>
                     </div>
                 </div>
-                
-                <div class="question-footer mt-2">
-                    <button type="button" class="btn btn-primary">Vorige Frage</button>
-                    <span><strong>1</strong> von <strong>5</strong> Fragen</span>
-                    <button type="button" class="btn btn-primary">Nächste Frage</button>
-                </div>
+            </div>
         </div>
     </div>
 
