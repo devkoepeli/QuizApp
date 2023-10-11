@@ -3,6 +3,7 @@ main-color-blue: #183CE9;
 color-body: #F3ECFF;
 color-green: #4EBF17;
 color-light-green: #B7F799;
+color-light-red: #FFA4A4;
 color-grey-options: #D6D6D6;
 color-lightblue-navigator: #DBDFF4;
 color-bg-quizz: #F7F7F7;
@@ -241,4 +242,34 @@ body {
 
 .quiz-finish-replay:hover {
     text-decoration: underline;
+}
+
+.answer-red {
+    background-color: #F81818;
+}
+
+.answer-lightred {
+    background-color: #FFA4A4;
+    color: white;
+}
+.answer-lightred:hover,
+.answer-lightred:active {
+    background-color: #FFA4A4;
+}
+
+.answer-green {
+    background-color: #4EBF17;
+    color: white;
+}
+
+.answer-lightgreen {
+    background-color: #B7F799;
+}
+.answer-lightgreen:hover,
+.answer-lightgreen:active {
+    background-color: #B7F799;
+}
+
+.font-white {
+    color: white;
 }
