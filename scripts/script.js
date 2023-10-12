@@ -181,7 +181,7 @@ function templateQA(i) {
         <div class="question-footer mt-2">
             <button onclick="showPrevious(${i})" type="button" class="btn btn-primary">Zurück</button>
             <span><strong>${questions[i]['question_number']}</strong> von <strong>${questions.length}</strong> Fragen</span>
-            <button onclick="showNextQuestion(${i})" type="button" class="btn btn-primary">Nächste Frage</button>
+            <button onclick="showNextQuestion(${i})" type="button" class="btn btn-primary" disabled>Nächste Frage</button>
         </div>
     `;
 }
