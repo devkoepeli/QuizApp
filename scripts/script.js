@@ -65,6 +65,9 @@ let questions = [
 ];
 
 
+let rightAnswers = 0;
+
+
 function showQuestion(i) {
     let cardContainer = document.getElementById('card');
     cardContainer.innerHTML = '';
@@ -99,9 +102,11 @@ function showNextQuestion(i) {
 
 function showFinish() {
     let cardContainer = document.getElementById('card');
+    let amountOfRightAnswers = document.getElementById('amount-right-answers');
     cardContainer.innerHTML = '';
 
     cardContainer.innerHTML = templateFinish();
+    amountOfRightAnswers.innerHTML = rightAnswers;
 }
 
 
@@ -113,6 +118,7 @@ function checkAnswer(selection, i) {
     if (question['right_answer'] == selectionSliced) {
         document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
         document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
+        rightAnswers += 1;
     } else {
         document.getElementById(selection).classList.add('answer-lightred');
         document.getElementById(selection).firstElementChild.classList.add('answer-red');
@@ -224,7 +230,7 @@ function templateFinish() {
                 <h5 class="quiz-finish-title">HTML QUIZ<br>BEENDET</h5>
                 <div class="quiz-score-wrapper">
                     <span class="quiz-score-text">DEIN SCORE</span>
-                    <span class="quiz-score">x/10</span>
+                    <span class="quiz-score"><span id="amount-right-answers">x</span>/${questions.length}</span>
                 </div>
                 <div class="quiz-finish-btn-container">
                     <button class="btn-finish">TEILEN</button>
