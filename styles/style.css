@@ -246,11 +246,11 @@ body {
 
 .answer-red {
     background-color: #F81818;
+    color: white;
 }
 
 .answer-lightred {
     background-color: #FFA4A4;
-    color: white;
 }
 .answer-lightred:hover,
 .answer-lightred:active {

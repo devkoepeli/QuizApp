@@ -4,7 +4,7 @@ let questions = [
         "answer_1": "Robbie Williams",
         "answer_2": "Lady Gaga",
         "answer_3": "Tim-Berners-Lee",
-        "answer_4": "Justin TImberlake",
+        "answer_4": "Justin Timberlake",
         "right_answer": 3,
         "question_number": 1
     },
@@ -41,7 +41,7 @@ let questions = [
         "answer_2": "max",
         "answer_3": "from",
         "answer_4": "spellcheck",
-        "right answer": 1,
+        "right_answer": 1,
         "question_number": 5
     },
     {
@@ -105,13 +105,20 @@ function showFinish() {
 }
 
 
-function checkValidity(i) {
-    let rightAnswer = questions[i]['right_answer'];
-    let answer = document.getElementById('option0');
-    if (rightAnswer === answer) {
-        answer.classList.add('bg-green');
+function checkAnswer(selection, i) {
+    let question = questions[i];
+    let selectionSliced = selection.slice(-1);
+    let idOfRightAnswer = question['right_answer'];
+
+    if (question['right_answer'] == selectionSliced) {
+        document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
+        document.getElementById(selection).firstElementChild.classList.add('answer-green') // accessing the child element of the div
     } else {
-        answer.classList.add('bg-red');
+        document.getElementById(selection).classList.add('answer-lightred');
+        document.getElementById(selection).firstElementChild.classList.add('answer-red')
+
+        document.getElementById(`answer_${idOfRightAnswer}`).classList.add('answer-lightgreen'); // show immediately the right answer
+        document.getElementById(`answer_${idOfRightAnswer}`).firstElementChild.classList.add('answer-green');
     }
 }
 
@@ -144,7 +151,7 @@ function templateQA(i) {
     return `
         <h5 class="card-title mt-4">${questions[i]['question']}</h5>
         <div class="card-answers">
-            <div onclick="checkValidity(${i})" id="option0" class="card mb-3 card-answer">
+            <div onclick="checkAnswer('answer_1', ${i})" id="answer_1" class="card mb-3 card-answer">
                 <div class="card-option">
                     A
                 </div>
@@ -152,7 +159,7 @@ function templateQA(i) {
                     ${questions[i]['answer_1']}
                 </div>
             </div>
-            <div class="card mb-3 card-answer">
+            <div onclick="checkAnswer('answer_2', ${i})" id="answer_2" class="card mb-3 card-answer">
                 <div class="card-option">
                     B
                 </div>
@@ -160,7 +167,7 @@ function templateQA(i) {
                     ${questions[i]['answer_2']}
                 </div>
             </div>
-            <div class="card mb-3 card-answer">
+            <div onclick="checkAnswer('answer_3', ${i})" id="answer_3" class="card mb-3 card-answer">
                 <div class="card-option">
                     C
                 </div>
@@ -168,7 +175,7 @@ function templateQA(i) {
                     ${questions[i]['answer_3']}
                 </div>
             </div>
-            <div class="card card-answer">
+            <div onclick="checkAnswer('answer_4', ${i})" id="answer_4" class="card card-answer">
                 <div class="card-option">
                     D
                 </div>
