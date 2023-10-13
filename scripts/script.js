@@ -108,18 +108,25 @@ function showFinish() {
 function checkAnswer(selection, i) {
     let question = questions[i];
     let selectionSliced = selection.slice(-1);
-    let idOfRightAnswer = question['right_answer'];
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
 
     if (question['right_answer'] == selectionSliced) {
         document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
-        document.getElementById(selection).firstElementChild.classList.add('answer-green') // accessing the child element of the div
+        document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
     } else {
         document.getElementById(selection).classList.add('answer-lightred');
-        document.getElementById(selection).firstElementChild.classList.add('answer-red')
+        document.getElementById(selection).firstElementChild.classList.add('answer-red');
 
-        document.getElementById(`answer_${idOfRightAnswer}`).classList.add('answer-lightgreen'); // show immediately the right answer
-        document.getElementById(`answer_${idOfRightAnswer}`).firstElementChild.classList.add('answer-green');
+        document.getElementById(idOfRightAnswer).classList.add('answer-lightgreen'); // show immediately the right answer
+        document.getElementById(idOfRightAnswer).firstElementChild.classList.add('answer-green');
     }
+    enableButton();
+}
+
+
+function enableButton() {
+    let nextButton = document.getElementById('next-button');
+    nextButton.disabled = false;
 }
 
 
@@ -188,7 +195,7 @@ function templateQA(i) {
         <div class="question-footer mt-2">
             <button onclick="showPrevious(${i})" type="button" class="btn btn-primary">Zurück</button>
             <span><strong>${questions[i]['question_number']}</strong> von <strong>${questions.length}</strong> Fragen</span>
-            <button onclick="showNextQuestion(${i})" type="button" class="btn btn-primary" disabled>Nächste Frage</button>
+            <button onclick="showNextQuestion(${i})" id="next-button" type="button" class="btn btn-primary" disabled>Nächste Frage</button>
         </div>
     `;
 }
