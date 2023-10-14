@@ -189,6 +189,12 @@ function progressBar(width) {
 }
 
 
+function restartQuiz() {
+    rightAnswers = 0;
+    showQuestion(0);
+}
+
+
 function templateQA(i) {
     return `
         <h5 class="card-title mt-4">${questions[i]['question']}</h5>
@@ -264,7 +270,7 @@ function templateFinish() {
                 <div class="quiz-finish-btn-container">
                     <button class="btn-finish">TEILEN</button>
                 </div>
-                <span onclick="showQuestion(0)" class="quiz-finish-replay">REPLAY</span>
+                <span onclick="restartQuiz()" class="quiz-finish-replay">REPLAY</span>
             </div>
         </div>
     `;
