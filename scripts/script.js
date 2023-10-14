@@ -112,28 +112,44 @@ function showFinish() {
     cardContainer.innerHTML = '';
 
     cardContainer.innerHTML = templateFinish();
-    document.getElementById('amount-right-answers').innerHTML = rightAnswers;
+    document.getElementById('amount-right-answers').innerHTML = rightAnswers; // result of correct answers
 }
 
 
 function checkAnswer(selection, i) {
-    let question = questions[i];
-    let selectionSliced = selection.slice(-1);
-    let idOfRightAnswer = `answer_${question['right_answer']}`;
-
-    if (question['right_answer'] == selectionSliced) {
-        document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
-        document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
-        rightAnswers += 1;
-        audioSuccess.play();
+    if (gameIsOver(selection, i)) {
+        showCorrectAnswer(selection);
     } else {
-        document.getElementById(selection).classList.add('answer-lightred');
-        document.getElementById(selection).firstElementChild.classList.add('answer-red');
-        audioFailure.play();
-        document.getElementById(idOfRightAnswer).classList.add('answer-lightgreen'); // show immediately the right answer
-        document.getElementById(idOfRightAnswer).firstElementChild.classList.add('answer-green');
+        showWrongAnswer(selection, i);
     }
     enableButton();
+}
+
+
+function gameIsOver(selection, i) {
+    let selectionSliced = selection.slice(-1);
+    let question = questions[i];
+    return question['right_answer'] == selectionSliced; // returns true / false
+}
+
+
+function showCorrectAnswer(selection) {
+    document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
+    document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
+    audioSuccess.play();
+    rightAnswers += 1; // adding the correct answers to variable
+}
+
+
+function showWrongAnswer(selection, i) {
+    let question = questions[i];
+    let idOfRightAnswer = `answer_${question['right_answer']}`; // we could let these let in the checkAnswer and transfer the variable to showWrongAnswer
+
+    document.getElementById(selection).classList.add('answer-lightred');
+    document.getElementById(selection).firstElementChild.classList.add('answer-red');
+    audioFailure.play();
+    document.getElementById(idOfRightAnswer).classList.add('answer-lightgreen'); // show immediately the right answer
+    document.getElementById(idOfRightAnswer).firstElementChild.classList.add('answer-green');
 }
 
 
