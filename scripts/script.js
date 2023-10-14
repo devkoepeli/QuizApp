@@ -136,6 +136,9 @@ function gameIsOver(selection, i) {
 function showCorrectAnswer(selection) {
     document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
     document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
+    for (let index = 1; index <= 4; index++) {
+        document.getElementById(`answer_${index}`).removeAttribute("onclick");
+    }
     audioSuccess.play();
     rightAnswers += 1; // adding the correct answers to variable
 }
@@ -147,9 +150,12 @@ function showWrongAnswer(selection, i) {
 
     document.getElementById(selection).classList.add('answer-lightred');
     document.getElementById(selection).firstElementChild.classList.add('answer-red');
-    audioFailure.play();
     document.getElementById(idOfRightAnswer).classList.add('answer-lightgreen'); // show immediately the right answer
     document.getElementById(idOfRightAnswer).firstElementChild.classList.add('answer-green');
+    for (let index = 1; index <= 4; index++) {
+        document.getElementById(`answer_${index}`).removeAttribute("onclick");
+    }
+    audioFailure.play();
 }
 
 
