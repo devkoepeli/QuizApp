@@ -87,9 +87,11 @@ function showPrevious(i) {
     if (i === 0) {
         cardContainer.innerHTML = '';
         cardContainer.innerHTML = templateStart();
+        highlightLanguagePrevious(i);
     } else {
         i--;
         showQuestion(i);
+        highlightLanguagePrevious(i);
     }
 }
 
@@ -103,6 +105,7 @@ function showNextQuestion(i) {
     } else {
         showFinish();
         progressBar(width);
+        highlightLanguage(i);
     }
 }
 
@@ -166,25 +169,36 @@ function enableButton() {
 
 
 function highlightLanguage(i) {
-    let indexOfQuestions = questions.indexOf(questions[i]);
     let elementHTML = document.getElementById('html');
     let elementJS = document.getElementById('JS');
     let elementCSS = document.getElementById('CSS');
-    if ([0,1,2,3,4].includes(indexOfQuestions)) {
+
+    if ([0,1,2,3,4].includes(i)) {
         elementHTML.classList.add('font-white');
-    } else {
+    }
+    if (i === 5) {
         elementHTML.classList.remove('font-white');
-            if ([6].includes(indexOfQuestions)) {
-                elementJS.classList.add('font-white');
-            } else {
-                elementJS.classList.remove('font-white');
-                if (indexOfQuestions === 5) {
-                    elementCSS.classList.add('font-white')
-                } else {
-                    elementCSS.classList.remove('font-white')
-                }
-            } 
-                
+        elementCSS.classList.add('font-white');
+    } 
+    if (i === 6) {
+        elementCSS.classList.remove('font-white');
+        elementJS.classList.add('font-white');
+    } else {
+        elementJS.classList.remove('font-white');
+    }
+}
+
+
+function highlightLanguagePrevious(i) {
+    let elementHTML = document.getElementById('html');
+    let elementCSS = document.getElementById('CSS');
+    let quizStartContainer = document.getElementById('quiz-start');
+
+    if (quizStartContainer) {
+        elementHTML.classList.remove('font-white');
+    } 
+    if (i === 4) {
+        elementCSS.classList.remove('font-white')
     }
 }
 
@@ -250,7 +264,7 @@ function templateQA(i) {
 
 function templateStart() {
     return `
-        <div class="card-image-container">
+        <div id="quiz-start" class="card-image-container">
             <img class="card-image" src="img/Quizapp-blue/bg b.png" alt="Bild vom Quiz">
             <h5 class="quiz-greeting">Welcome to<br>
                 The Awesome HTML Quiz
