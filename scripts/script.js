@@ -66,9 +66,11 @@ let questions = [
 
 
 let rightAnswers = 0;
+let audioSuccess = new Audio('audio/sucess.mp3');
+let audioFailure = new Audio('audio/failure.mp3');
 
 
-function showQuestion(i) {
+function showQuestion(i) { // show first question -> i = 0
     let width = (i / questions.length) * 100; // returns the percentage of progress: 0 / 7 = 0%
     let cardContainer = document.getElementById('card');
     cardContainer.innerHTML = '';
@@ -123,10 +125,11 @@ function checkAnswer(selection, i) {
         document.getElementById(selection).classList.add('answer-lightgreen'); // accessing the div
         document.getElementById(selection).firstElementChild.classList.add('answer-green'); // accessing the child element of the div
         rightAnswers += 1;
+        audioSuccess.play();
     } else {
         document.getElementById(selection).classList.add('answer-lightred');
         document.getElementById(selection).firstElementChild.classList.add('answer-red');
-
+        audioFailure.play();
         document.getElementById(idOfRightAnswer).classList.add('answer-lightgreen'); // show immediately the right answer
         document.getElementById(idOfRightAnswer).firstElementChild.classList.add('answer-green');
     }
