@@ -69,11 +69,13 @@ let rightAnswers = 0;
 
 
 function showQuestion(i) {
+    let width = (i / questions.length) * 100; // returns the percentage of progress: 0 / 7 = 0%
     let cardContainer = document.getElementById('card');
     cardContainer.innerHTML = '';
     
     cardContainer.innerHTML = templateQA(i);
     highlightLanguage(i);
+    progressBar(width);
 }
 
 
@@ -92,21 +94,23 @@ function showPrevious(i) {
 
 function showNextQuestion(i) {
     i++;
+    let width = Math.round((i / questions.length) * 100); // returns the percentage of progress: 1 / 7 = 0.142352 *100 = 14
     if (i <= 6) {
         showQuestion(i);
+        progressBar(width);
     } else {
         showFinish();
+        progressBar(width);
     }
 }
 
 
 function showFinish() {
     let cardContainer = document.getElementById('card');
-    let amountOfRightAnswers = document.getElementById('amount-right-answers');
     cardContainer.innerHTML = '';
 
     cardContainer.innerHTML = templateFinish();
-    amountOfRightAnswers.innerHTML = rightAnswers;
+    document.getElementById('amount-right-answers').innerHTML = rightAnswers;
 }
 
 
@@ -157,6 +161,12 @@ function highlightLanguage(i) {
             } 
                 
     }
+}
+
+
+function progressBar(width) {
+    let progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = `${width}%`;
 }
 
 
@@ -238,6 +248,5 @@ function templateFinish() {
                 <a href="" class="quiz-finish-replay">REPLAY</a>
             </div>
         </div>
-        
     `;
 }

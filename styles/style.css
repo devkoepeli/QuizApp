@@ -273,3 +273,15 @@ body {
 .font-white {
     color: white;
 }
+
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: unset;
+}
+
+.progress-bar {
+    background-color: #183CE9;
+}
