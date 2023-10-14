@@ -238,6 +238,7 @@ body {
 .quiz-finish-replay {
     text-decoration: none;
     color: #FF4E10;
+    cursor: pointer;
 }
 
 .quiz-finish-replay:hover {

@@ -245,7 +245,7 @@ function templateFinish() {
                 <div class="quiz-finish-btn-container">
                     <button class="btn-finish">TEILEN</button>
                 </div>
-                <a href="" class="quiz-finish-replay">REPLAY</a>
+                <span onclick="showQuestion(0)" class="quiz-finish-replay">REPLAY</span>
             </div>
         </div>
     `;
