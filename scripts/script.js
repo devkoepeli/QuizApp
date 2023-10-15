@@ -71,7 +71,7 @@ let audioFailure = new Audio('audio/failure.mp3');
 
 
 function showQuestion(i) { // show first question -> i = 0
-    let width = (i / questions.length) * 100; // returns the percentage of progress: 0 / 7 = 0%
+    let width = Math.round((i / questions.length) * 100); // returns the percentage of progress: 0 / 7 = 0%
     let cardContainer = document.getElementById('card');
     cardContainer.innerHTML = '';
     
@@ -101,11 +101,13 @@ function showNextQuestion(i) {
     let width = Math.round((i / questions.length) * 100); // returns the percentage of progress: 1 / 7 = 0.142352 *100 = 14
     if (i <= 6) {
         showQuestion(i);
-        progressBar(width);
     } else {
         showFinish();
         progressBar(width);
         highlightLanguage(i);
+    }
+    if (i === 6) {
+        buttonFinish();
     }
 }
 
@@ -212,6 +214,12 @@ function progressBar(width) {
 function restartQuiz() {
     rightAnswers = 0;
     showQuestion(0);
+}
+
+
+function buttonFinish() {
+    let buttonNext = document.getElementById('next-button');
+    buttonNext.innerHTML = 'Abschliessen';
 }
 
 
