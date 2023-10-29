@@ -289,7 +289,7 @@ function templateFinish() {
     return /*html*/ `
         <div class=card-finish-container>
             <div class="card-finish-circle">
-                <img class="card-finish-image" src="../img/quizapp-blue/group 5.png" alt="Bild für erfolgreiches Beenden des Quiz">
+                <img class="card-finish-image" src="../img/Quizapp-blue/group-5.png" alt="Bild für erfolgreiches Beenden des Quiz">
                 <h5 class="quiz-finish-title">HTML QUIZ<br>BEENDET</h5>
                 <div class="quiz-score-wrapper">
                     <span class="quiz-score-text">DEIN SCORE</span>
